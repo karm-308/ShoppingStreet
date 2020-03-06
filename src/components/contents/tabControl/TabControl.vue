@@ -26,7 +26,9 @@
     },
     methods: {
       ItemClick(index){
-        this.currentIndex = index
+        this.currentIndex = index;
+        //自定义事件，往外面传数据(Home.vue)
+        this.$emit('tabClick',index)
       }
     }
   }
