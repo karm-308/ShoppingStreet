@@ -50,11 +50,21 @@
     },
     methods: {
       scrollTo(x,y,time=600){
-        this.scroll.scrollTo(x,y,time)
+        this.scroll && this.scroll.scrollTo(x,y,time)
       },
       //完成加载更多之后传给home清除记录
       finishPullUp(){
-        this.scroll.finishPullUp()
+        this.scroll && this.scroll.finishPullUp()
+      },
+    //  图片加载完之后自动刷新
+      refresh(){
+        //打印refresh，看看调用了几次
+        //console.log('.....');
+        this.scroll && this.scroll.refresh()
+      },
+    //  拿取scroll滚动到某个位置的Y值
+      getScrollY(){
+        return this.scroll ? this.scroll.y : 0
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="GoodsListItem">
-    <img :src="goodsItem.show.img" alt="">
+    <img :src="goodsItem.show.img" alt="" @load="imageLoad">
     <div class="info">
       <p>{{goodsItem.title}}</p>
       <span class="price">${{goodsItem.price}}</span>
@@ -20,6 +20,14 @@
         default(){
           return{}
         }
+      }
+    },
+    methods: {
+      //监听图片是否加载完
+      imageLoad(){
+        //console.log('imageLoad');
+        //用事件总线发射事件,在首页进行监听,默认$bus为空，所以得用vue原型增加一个事件，在main.js
+        this.$bus.$emit('itemImageLoad')
       }
     }
   }
